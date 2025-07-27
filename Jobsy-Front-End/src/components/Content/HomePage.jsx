@@ -11,8 +11,16 @@ import Newsletter from "../sections/Newsletter";
 import FAQSection from "../sections/FAQSection";
 import { motion } from "framer-motion";
 import ScrollProgress from "../layouts/ScrollProgress";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 function HomePage() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <>
       <main className="relative">
@@ -20,7 +28,15 @@ function HomePage() {
         <ScrollProgress />
         {/* Hero Section - No animation needed (first visible element) */}
         <section id="hero">
+          <motion.section
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            id="how-it-works"
+          >
           <HeroSection />
+          </motion.section>
         </section>
         {/* Animated Sections */}
         <motion.section

@@ -13,9 +13,16 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('location');
+            $table->string('profile_photo')->nullable()->default('default.png');
+            $table->enum('role',['customer','worker','admin']);
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

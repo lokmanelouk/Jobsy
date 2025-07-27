@@ -1,4 +1,5 @@
 import { FaUsers, FaHandshake, FaChartLine, FaLightbulb, FaShieldAlt, FaSmile, FaMedal, FaHeart, FaStar } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 
 const About = () => {
   const features = [
@@ -212,12 +213,12 @@ const About = () => {
               are delivered in France.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button className="bg-white hover:bg-gray-100 text-[#1E40AF] px-8 py-3 rounded-lg font-semibold transition">
+              <Link to='/login' className="bg-white hover:bg-gray-100 text-[#1E40AF] px-8 py-3 rounded-lg font-semibold transition">
                 Find a Professional
-              </button>
-              <button className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3 rounded-lg font-semibold transition">
+              </Link>
+              <Link to='/login' className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-3 rounded-lg font-semibold transition">
                 Join as Professional
-              </button>
+              </Link>
             </div>
           </div>
         </div>

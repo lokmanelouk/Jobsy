@@ -23,13 +23,26 @@ import MessagesPage from "./components/Message/messagesPage";
 import ChatPage from "./components/Message/ChatPage";
 import NotFoundPage from "./NotFoundPage";
 import UserDashboardPage from "./components/Clients/UserDashboardPage";
+import ScrollToTop from "./components/layouts/ScrollTop";
+import axios from 'axios'
 
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+  const [customers,setCustomers] = useState([])
+
+  const getCustomers = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/customers') 
+      setCustomers(response.data.data)
+    } catch (error){
+      console.error(error)
+    }
+  }
+
   return (
     <div>
+      <ScrollToTop />
       <Routes>
         {/* Public routes with layout */}
         <Route element={
@@ -46,12 +59,12 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/workers" element={<WorkersPage />} />
           <Route path="/worker/job-requests" element={<JobRequestsPage />} />
-          <Route path="/worker/:id" element={<WorkerProfilePage />} />
+          <Route path="/workers/:id" element={<WorkerProfilePage />} />
           <Route path="/messages" element={<MessagesPage />} />
           <Route path="/messages/:conversationId" element={<ChatPage />} />
-          
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/user-dashboard" element={<UserDashboardPage />} />
+
           
           {/* Protected routes */}
           <Route element={<ProtectedRoute />}>

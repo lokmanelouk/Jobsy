@@ -11,7 +11,7 @@ const FinalCTA = () => {
             Post your job today and get matched with top-rated professionals in minutes!
           </p>
           <Link
-            to="/post-job"
+            to="/workers"
             className="inline-block bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-4 rounded-lg font-bold text-lg transition transform hover:scale-105"
           >
             Get Started Now

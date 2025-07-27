@@ -12,7 +12,8 @@ class WorkerController extends Controller
      */
     public function index()
     {
-        //
+        $workers = Worker::with(['customer','category'])->withAvg('reviews', 'rating')->withCount('reviews')->paginate(20);
+        return response()->json($workers , 200);
     }
 
     /**
@@ -20,7 +21,7 @@ class WorkerController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -34,9 +35,10 @@ class WorkerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Worker $worker)
+    public function show($id)
     {
-        //
+        $worker = Worker::with(['customer', 'category', 'reviews'])-> findOrFail($id);
+        return response()->json($worker , 200);
     }
 
     /**
